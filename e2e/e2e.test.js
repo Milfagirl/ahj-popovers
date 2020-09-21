@@ -33,13 +33,12 @@ describe('Validation', () => {
     await browser.close();
     server.kill();
   });
-  test('should add .cardvisible class for valid card', async () => {
+  test('should add change display block', async () => {
     await page.goto(baseUrl);
-    const form = await page.$('form');
-    const input = await form.$('input');
-    await input.type('5555555555554444');
-    const submit = await form.$('button');
-    submit.click();
-    await page.waitFor('[data-title= master].cardvisible');
+    const button = await page.$('button');
+    const container = await page.$('.container');
+    const popover = await container.$('.popover_content');
+    button.click();
+    await popover.waitFor(popover.style.display = 'block');
   });
 })
