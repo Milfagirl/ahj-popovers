@@ -39,6 +39,7 @@ describe('Validation', () => {
     const container = await page.$('.container');
     const popover = await container.$('.popover_content');
     button.click();
-    await popover.waitFor(popover.style.display = 'block');
+    await popover.style.display('block');
+    // await popover.waitFor(popover.style.display = 'block');
   });
 })
